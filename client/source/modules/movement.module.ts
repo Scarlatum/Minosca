@@ -2,14 +2,12 @@ import { Position, PositionEnum } from '~/types/common'
 import { IEntity } from '~/entities/entity.model'
 import { Result } from '~/types/utils';
 
-
 interface IStats {
   status: MovementStatus,
   range: number
 }
 
 const enum Keys { Up, Dowm, Left, Right }
-
 
 interface IBindings {
   movement: Array<string>
@@ -29,14 +27,14 @@ export default class Movement implements IMovement {
 
   static DEFAULT_MOVEMENT_BINDINGS: Array<string> = ['w','s','a','r'];
 
-  target : IEntity
-  stats : IStats = Movement.defaultStats();
-  pressedKeys : Set<Keys> = new Set();
-  bindings : IBindings = {
+  public target : IEntity
+  public stats : IStats = Movement.defaultStats();
+  public pressedKeys : Set<Keys> = new Set();
+  public bindings : IBindings = {
     movement: Movement.DEFAULT_MOVEMENT_BINDINGS
   };
 
-  keyMap: Map<string, Keys> = new Map();
+  public keyMap: Map<string, Keys> = new Map();
 
   constructor(target: IEntity) {
     this.target = target;
