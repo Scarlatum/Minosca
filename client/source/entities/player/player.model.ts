@@ -21,7 +21,7 @@ export default class Player extends Entity {
 
     this.#movement = new Movement(this);
 
-    if ( mode ) this.debugger = new Debugger(this, {
+    if ( mode === EntityMode.DEBUG ) this.debugger = new Debugger(this, {
       movement: this.#movement      
     });
 
