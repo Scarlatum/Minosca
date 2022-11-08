@@ -1,4 +1,4 @@
-import { FC,useRef, useEffect } from 'react'
+import { FC, useRef, useEffect } from 'react'
 import modelClass from '~/components/canvas/canvas.model'
 
 interface ICanvasComponent extends React.CanvasHTMLAttributes<unknown> {
@@ -22,7 +22,7 @@ export const CanvasComponent: FC<ICanvasComponent> = params => {
 
     if ( initResult instanceof Error ) errorStack.push(initResult);
 
-  })
+  }, []);
 
   return errorStack.length
     ? <ul>{ errorStack.map(err => <li>{ err.message }</li>) }</ul>

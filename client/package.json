@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "vitest::test": "vitest --config vitest.config.ts",
+    "vitest::watch": "vitest --watch --config vitest.config.ts"
   },
   "dependencies": {
     "react": "^18.2.0",

@@ -5,15 +5,29 @@
     "module": "ESNext",
     "lib": ["ESNext", "DOM"],
     "moduleResolution": "Node",
-    "strict": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
     "noEmit": true,
     "noUnusedLocals": true,
+    "skipLibCheck": true,
+    
+    // Strict shit
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "skipLibCheck": true
+    "noImplicitAny": true,
+    "strictPropertyInitialization": true,
+    "strictNullChecks": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "exactOptionalPropertyTypes": true,
+
+    "baseUrl": "server",
+    "paths": {
+      "~/*": ["./source/*"],
+    },
   },
-  "include": ["src"]
+  "include": ["source"]
 }

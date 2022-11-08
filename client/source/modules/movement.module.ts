@@ -25,7 +25,7 @@ export const enum MovementStatus { Idle, Move, Blocked }
 
 export default class Movement implements IMovement {
 
-  static DEFAULT_MOVEMENT_BINDINGS: Array<string> = ['w','s','a','r'];
+  static DEFAULT_MOVEMENT_BINDINGS: Array<string> = ['w','s','a','d'];
 
   public target : IEntity
   public stats : IStats = Movement.defaultStats();
@@ -37,7 +37,11 @@ export default class Movement implements IMovement {
   public keyMap: Map<string, Keys> = new Map();
 
   constructor(target: IEntity) {
+    
     this.target = target;
+
+    this.applyBindings(this.bindings.movement);
+
   }
 
   public static defaultStats(): IStats {
@@ -54,8 +58,6 @@ export default class Movement implements IMovement {
   private init(): Result<void> {
 
     if ( !window ) return Error('WTF?');
-
-    this.applyBindings(this.bindings.movement);
 
     // TODO DRY
     window.addEventListener('keydown', event => {

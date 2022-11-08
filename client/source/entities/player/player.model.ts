@@ -1,14 +1,34 @@
+import { Debugger, EntityMode } from './player.debug'
 import Entity from '~/entities/entity.model'
 import Movement, { MovementStatus } from '~/modules/movement.module';
 
-interface IPlayer {}
+// Utils
+import { Some } from '~/types/utils'
 
-export default class Player extends Entity implements IPlayer {
+// Interfaces
+interface PlayerProps {
+  mode: EntityMode
+}
+
+// default class module
+export default class Player extends Entity {
 
   #movement: Movement;
+  
+  public debugger: Some<Debugger>;
 
-  constructor() { super();
+  constructor({ mode }: Partial<PlayerProps>) { super();
+
     this.#movement = new Movement(this);
+
+    if ( mode ) this.debugger = new Debugger(this, {
+      movement: this.#movement      
+    });
+
+  }
+
+  get movementStatus() {
+    return this.#movement.stats
   }
 
   public liveStep() {
